@@ -67,11 +67,11 @@ Route::get('/contracts/{costumer_contract}/manage', [Contracts::class,'manage'])
 //Edit Contract
 Route::get('/contracts/{costumer_contract}/edit', [Contracts::class,'edit'])->middleware('auth');
 
-//Delete Contract
-Route::delete('/contracts/{costumer_contract}', [Contracts::class,'destroy'])->middleware('auth');
-
 //Update Contract
 Route::put('/contracts/{costumer_contract}', [Contracts::class,'update'])->middleware('auth');
+
+//Delete Contract
+Route::delete('/contracts/{costumer_contract}', [Contracts::class,'destroy_contract'])->middleware('auth');
 
 //Invoice Page
 Route::get('/invoices', [Contracts::class,'show'])->middleware('auth');

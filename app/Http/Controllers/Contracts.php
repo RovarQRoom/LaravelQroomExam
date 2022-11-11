@@ -84,10 +84,12 @@ class Contracts extends Controller
     }
 
     //Destroy Contract
-    public function destroy(Request $request,Costumer_Contract $costumer_contract){
+    public function destroy_contract(Request $request,Costumer_Contract $costumer_contract){
         dd($request->all());
-        $costumer_contract->find(auth()->user()->id)->delete();
-        return redirect('/')->with('message','Contract Deleted Successfully');
+        if($costumer_contract->user_id==auth()->user()->id){
+            $costumer_contract->find(auth()->user()->id)->delete();
+            return redirect('/')->with('message','Contract Deleted Successfully');
+        }
     }
 
     //Show Invoice Page
